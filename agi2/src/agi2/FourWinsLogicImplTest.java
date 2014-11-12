@@ -13,12 +13,9 @@ public class FourWinsLogicImplTest {
 		game = new FourWinsLogicImpl();
 	}
 
-
-	
 	@Test
 	public void testIfGameContinues() {
 		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
-	
 	}
 
 	@Test
@@ -29,7 +26,7 @@ public class FourWinsLogicImplTest {
 		assertEquals(Result.won, game.throwChip(Chip.red, 2));
 	}
 
-	@Test (expected = IndexOutOfBoundsException.class)
+	@Test(expected = IndexOutOfBoundsException.class)
 	public void testIfGameIsTied() {
 		game.throwChip(Chip.blue, 0);
 		game.throwChip(Chip.blue, 0);
@@ -37,42 +34,42 @@ public class FourWinsLogicImplTest {
 		game.throwChip(Chip.red, 0);
 		game.throwChip(Chip.blue, 0);
 		game.throwChip(Chip.blue, 0);
-		
+
 		game.throwChip(Chip.red, 1);
 		game.throwChip(Chip.red, 1);
 		game.throwChip(Chip.blue, 1);
 		game.throwChip(Chip.blue, 1);
 		game.throwChip(Chip.red, 1);
 		game.throwChip(Chip.red, 1);
-		
+
 		game.throwChip(Chip.blue, 2);
 		game.throwChip(Chip.blue, 2);
 		game.throwChip(Chip.red, 2);
 		game.throwChip(Chip.red, 2);
 		game.throwChip(Chip.blue, 2);
 		game.throwChip(Chip.blue, 2);
-		
+
 		game.throwChip(Chip.red, 3);
 		game.throwChip(Chip.red, 3);
 		game.throwChip(Chip.blue, 3);
 		game.throwChip(Chip.blue, 3);
 		game.throwChip(Chip.red, 3);
 		game.throwChip(Chip.red, 3);
-		
+
 		game.throwChip(Chip.blue, 4);
 		game.throwChip(Chip.blue, 4);
 		game.throwChip(Chip.red, 4);
 		game.throwChip(Chip.red, 4);
 		game.throwChip(Chip.blue, 4);
 		game.throwChip(Chip.blue, 4);
-		
+
 		game.throwChip(Chip.red, 5);
 		game.throwChip(Chip.red, 5);
 		game.throwChip(Chip.blue, 5);
 		game.throwChip(Chip.blue, 5);
 		game.throwChip(Chip.red, 5);
 		game.throwChip(Chip.red, 5);
-		
+
 		game.throwChip(Chip.blue, 6);
 		game.throwChip(Chip.blue, 6);
 		game.throwChip(Chip.red, 6);
@@ -98,21 +95,227 @@ public class FourWinsLogicImplTest {
 		assertEquals(Result.won, game.throwChip(Chip.red, 3));
 	}
 
-	
 	@Test
-	public void testIfGameIsWonDiagonalyToTheUpperRight() {
-		
+	public void testIfGameIsWonHorizontalOneToTheLeftTwoToTheRight() {
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 3));
+		assertEquals(Result.won, game.throwChip(Chip.red, 1));
+	}
+
+	@Test
+	public void testIfGameIsWonHorizontalOneToTheRightTwoToTheLeft() {
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 3));
+		assertEquals(Result.won, game.throwChip(Chip.red, 2));
+	}
+
+	@Test
+	public void testIfGameIsWonThreeDiagonalyToTheUpperRight() {
 		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
-		
-		
-		
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
 		assertEquals(Result.continues, game.throwChip(Chip.red, 5));
-		
-		
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 5));
+
 		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
-		
-		
+		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 4));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
 		assertEquals(Result.won, game.throwChip(Chip.red, 3));
+	}
+
+	@Test
+	public void testIfGameIsWonThreeDiagonalyToTheBottomLeft() {
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 5));
+
+		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 4));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 3));
+
+		assertEquals(Result.won, game.throwChip(Chip.red, 6));
+	}
+
+	@Test
+	public void testIfGameIsWonTwoDiagonalyToTheUpperRightOneLowerLeft() {
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 5));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 3));
+
+		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 4));
+		assertEquals(Result.won, game.throwChip(Chip.red, 4));
+	}
+
+	@Test
+	public void testIfGameIsWonOneDiagonalyToTheUpperRightTwoLowerLeft() {
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 6));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 5));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 5));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 3));
+
+		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 4));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 4));
+
+		assertEquals(Result.won, game.throwChip(Chip.red, 5));
+
+	}
+
+	@Test
+	public void testIfGameIsWonThreeDiagonalyToTheUpperLeft() {
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 1));
+
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.won, game.throwChip(Chip.red, 3));
+	}
+
+	@Test
+	public void testIfGameIsWonThreeDiagonalyToTheBottomRight() {
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 1));
+
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 3));
+
+		assertEquals(Result.won, game.throwChip(Chip.red, 0));
+	}
+
+	@Test
+	public void testIfGameIsWonOneDiagonalyToTheUpperLeftTwoLowerRight() {
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));	
+
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+		
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 3));
+
+		assertEquals(Result.won, game.throwChip(Chip.red, 1));
 		
 	}
+
+	@Test
+	public void testIfGameIsWonTwoDiagonalyToTheUpperLeftOneLowerRight() {
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 0));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 1));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 1));
+
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 2));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 2));
+
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.blue, 3));
+		assertEquals(Result.continues, game.throwChip(Chip.red, 3));
+
+		assertEquals(Result.won, game.throwChip(Chip.red, 2));
+	}
+
 }
