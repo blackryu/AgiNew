@@ -6,11 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class FourWinsLogicImplTest {
-	FourWinsLogicImpl game;
+	GameLogicImpl game;
 
 	@Before
 	public void setUp() {
-		game = new FourWinsLogicImpl();
+		game = new GameLogicImpl(6,7);
 	}
 
 	@Test
