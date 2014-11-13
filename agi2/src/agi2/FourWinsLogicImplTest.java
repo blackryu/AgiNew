@@ -26,7 +26,7 @@ public class FourWinsLogicImplTest {
 		assertEquals(Result.won, game.throwChip(Chip.red, 2));
 	}
 
-	@Test(expected = IndexOutOfBoundsException.class)
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testIfGameIsTied() {
 		game.throwChip(Chip.blue, 0);
 		game.throwChip(Chip.blue, 0);
@@ -318,4 +318,14 @@ public class FourWinsLogicImplTest {
 		assertEquals(Result.won, game.throwChip(Chip.red, 2));
 	}
 
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void testIfColumnIsFull() {
+		game.throwChip(Chip.blue, 0);
+		game.throwChip(Chip.blue, 0);
+		game.throwChip(Chip.blue, 0);
+		game.throwChip(Chip.blue, 0);
+		game.throwChip(Chip.blue, 0);
+		game.throwChip(Chip.red, 0);
+		game.throwChip(Chip.blue, 0);
+	}
 }

@@ -8,6 +8,7 @@ public class FourWinsLogicImpl implements FourWinsLogic {
 	public Result throwChip(Chip color, int column) {
 
 		placeChip(color, column);
+
 		status = checkResult(color, column);
 
 		if (status == Result.won) {
@@ -130,9 +131,9 @@ public class FourWinsLogicImpl implements FourWinsLogic {
 	}
 
 	private void placeChip(Chip color, int column)
-			throws IndexOutOfBoundsException {
-		if (isPlayingFieldFull())
-			throw new IndexOutOfBoundsException("Spielfeld ist voll!");
+			throws ArrayIndexOutOfBoundsException {
+		if (isColumnFull(column))
+			throw new ArrayIndexOutOfBoundsException("Spalte ist voll!");
 		for (int i = playingField.length - 1; i >= 0; i--) {
 			if (playingField[i][column] == null) {
 				playingField[i][column] = color;
@@ -140,7 +141,13 @@ public class FourWinsLogicImpl implements FourWinsLogic {
 			}
 		}
 	}
-
+	public boolean isColumnFull(int column){
+		for (int i = 0; i < 6; i++) {
+			if (playingField[i][column] == null)
+				return false;
+		}
+		return true;
+	}
 	public boolean isPlayingFieldFull() {
 		for (int i = 0; i < 7; i++) {
 			if (playingField[0][i] == null)
